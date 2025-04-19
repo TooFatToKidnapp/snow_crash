@@ -1,5 +1,5 @@
 we found the following file in the home directory
-```
+```shell
 level02@SnowCrash:~$ ls -l
 total 12
 ----r--r-- 1 flag02 level02 8302 Aug 30  2015 level02.pcap
@@ -10,8 +10,8 @@ so we use [Wireshark](https://en.wikipedia.org/wiki/Wireshark) to inspect the pa
 
 but first lets copy the file in to out main machine
 
-```
-~/Desktop$  scp -P 4242  level02@<VM IP>:/home/user/level02/level02.pcap .
+```shell
+~/Desktop$ scp -P 4242  level02@<VM IP>:/home/user/level02/level02.pcap .
 ```
 
 when we open the file with wireshark and follow the TCP stream we get the following snipped:
@@ -69,7 +69,7 @@ the non printable characters are represented as a `.`
 
 we logged in with the password `ft_waNDReL0L`:
 
-```
+```shell
 level02@SnowCrash:~$ su flag02
 Password: ft_waNDReL0Lg
 flag02@SnowCrash:~$
@@ -77,7 +77,7 @@ flag02@SnowCrash:~$
 
 finally, we retrieved the flag:
 
-```
+```shell
 flag02@SnowCrash:~$ getflag
 Check flag. Here is your token: kooda2puivaav1idi4f57q8iq
 ```
