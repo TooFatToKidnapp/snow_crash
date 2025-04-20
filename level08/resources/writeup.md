@@ -77,4 +77,13 @@ level08@SnowCrash:~$ ./level08 /tmp/symlink
 quif5eloekouj29ke0vouxean
 ```
 
+now lets get the flag
+```shell
+level08@SnowCrash:~$ su flag08
+Password: quif5eloekouj29ke0vouxean
+Don't forget to launch getflag !
+flag08@SnowCrash:~$ getflag
+Check flag.Here is your token : 25749xKZ8L7DkSCwJkT9dyv6f
+```
+
 on to the next challenge
