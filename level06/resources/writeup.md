@@ -41,8 +41,8 @@ int32_t main(int32_t argc, char** argv, char** envp)
 }
 ```
 
-the binary expects two arguments and passes them to a child process, which runs an instance of the `level06.php` script.
-we also notice that the binary file has the user id bit set , meaning that the binary file runs with the privileges of its owner
+the binary expects two arguments that are passed to a instance of the `level06.php` script.
+we also notice that the binary file has the user `SUID` bit set , meaning that the binary file runs with the privileges of its owner
 
 lets read the content of the php script
 ```php
