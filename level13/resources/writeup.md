@@ -7,14 +7,14 @@ int32_t main(int32_t argc, char** argv, char** envp)
 {
     if (getuid() == 0x1092)
         return printf("your token is %s\n", ft_des("boe]!ai0FB@.:|L6l@A?>qJ}I"));
-    
+
     printf("UID %d started us but we we expe…", getuid(), 0x1092);
     exit(1);
     /* no return */
 }
 ```
 
-using gdb we can jump straight to the `printf` line to get the decrypted flag :
+using gdb we can bypass the `getuid` condition and print the token
 
 ```
 (gdb) file level13
@@ -26,8 +26,8 @@ Dump of assembler code for function main:
    0x0804858f <+3>:	    and    $0xfffffff0,%esp
    0x08048592 <+6>:	    sub    $0x10,%esp
    0x08048595 <+9>:	    call   0x8048380 <getuid@plt>
-   0x0804859a <+14>:	cmp    $0x1092,%eax
-   0x0804859f <+19>:	je     0x80485cb <main+63>
+   0x0804859a <+14>:	cmp    $0x1092,%eax                # getuid() == 0x1092
+   0x0804859f <+19>:	je     0x80485cb <main+63>         # if true jump to address 0x80485cb
    0x080485a1 <+21>:	call   0x8048380 <getuid@plt>
    0x080485a6 <+26>:	mov    $0x80486c8,%edx
    0x080485ab <+31>:	movl   $0x1092,0x8(%esp)

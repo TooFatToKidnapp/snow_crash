@@ -9,7 +9,7 @@ int32_t main(int32_t argc, char** argv, char** envp)
     int32_t eax = *(gsbase + 0x14);
     int32_t var_120 = 0;
     int32_t result;
-    
+
     if (ptrace(PTRACE_TRACEME, 0, 1, 0, 0) >= 0)
     {
         if (!getenv("LD_PRELOAD"))
@@ -17,11 +17,11 @@ int32_t main(int32_t argc, char** argv, char** envp)
             if (open("/etc/ld.so.preload", 0) <= 0)
             {
                 int32_t eax_5 = syscall_open("/proc/self/maps", 0);
-                
+
                 if (eax_5 != 0xffffffff)
                 {
                     void var_114;
-                    
+
                     while (syscall_gets(&var_114, 0x100, eax_5))
                     {
                         if (isLib(&var_114, "libc"))
@@ -32,7 +32,7 @@ int32_t main(int32_t argc, char** argv, char** envp)
                             {
                                 fwrite("Check flag.Here is your token : ", 1, 0x20, stdout);
                                 int32_t eax_8 = getuid();
-                                
+
                                 if (eax_8 == 0xbbe)
                                     fputs(ft_des("H8B8h_20B4J43><8>\ED<;j@3"), stdout);
                                 else if (eax_8 > 0xbbe)
@@ -78,11 +78,11 @@ int32_t main(int32_t argc, char** argv, char** envp)
                                     fwrite("You are root are you that dumb ?…", 1, 0x21, stdout);
                                 else
                                     fwrite("\nNope there is no token here fo…", 1, 0x38, stdout);
-                                
+
                                 fputc(0xa, stdout);
                                 break;
                             }
-                            
+
                             if (!afterSubstr(&var_114, "00000000 00:00 0"))
                             {
                                 fwrite("LD_PRELOAD detected through memo…", 1, 0x30, stderr);
@@ -90,7 +90,7 @@ int32_t main(int32_t argc, char** argv, char** envp)
                             }
                         }
                     }
-                    
+
                     result = 0;
                 }
                 else
@@ -116,10 +116,10 @@ int32_t main(int32_t argc, char** argv, char** envp)
         puts("You should not reverse this");
         result = 1;
     }
-    
+
     if (eax == *(gsbase + 0x14))
         return result;
-    
+
     __stack_chk_fail();
     /* no return */
 }
@@ -132,9 +132,6 @@ we get every decrypted string by jumping to `fputs` lines.
 after that it's just a matter of trial and error until we get the right flag
 
 ```
-
-(gdb)
-(gdb)
 (gdb) jump *0x08048bbb
 The program is not being run.
 (gdb) break main
@@ -182,6 +179,8 @@ A debugging session is active.
 
 Quit anyway? (y or n) y
 level14@SnowCrash:~$ su flag14
-Password:
+Password: 7QiHafiNa3HVozsaXkawuYrTstxbpABHD8CPnHJ
 Congratulation. Type getflag to get the key and send it to me the owner of this livecd :)
+flag14@SnowCrash:~$ getflag
+Check flag.Here is your token : 7QiHafiNa3HVozsaXkawuYrTstxbpABHD8CPnHJ
 ```

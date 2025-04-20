@@ -1,7 +1,6 @@
 in this level we have a file containing a lua script that has a `SUID` bit set
 
-```shell
-level11@SnowCrash:~$ cat level11.lua
+```lua
 #!/usr/bin/env lua
 local socket = require("socket") # Import the LuaSocket library for network operations
 local server = assert(socket.bind("127.0.0.1", 5151)) # Create a TCP server bound to localhost port 5151
@@ -43,7 +42,7 @@ after trying to connect to the localhost:5151 we can deduce that the script is a
 
 we can use the password input to execute any shell command we want by commenting the ` | sha1sum` part.
 
-lets try and see : 
+lets try and see :
 
 ```shell
 level11@SnowCrash:~$ nc localhost 5151

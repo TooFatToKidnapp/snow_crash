@@ -1,6 +1,6 @@
 in this level we have a perl code that launches a web service (CGI) that takes two params `x` and `y`
 
-```shell
+```perl
 level12@SnowCrash:~$ cat level12.pl
 #!/usr/bin/env perl
 # localhost:4646
@@ -32,12 +32,11 @@ sub n {
 }
 
 n(t(param("x"), param("y")));
-level12@SnowCrash:~$
 ```
 
-we see that we can inject shellcode if we play it right.
+we see that we can inject shell code if we play it right.
 
-the first regular expresion convert all letters to uppercase
+the first regular expression convert all letters to uppercase
 
 and the second one Remove everything after first whitespace
 
